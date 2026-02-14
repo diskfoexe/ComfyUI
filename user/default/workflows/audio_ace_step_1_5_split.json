@@ -1,0 +1,820 @@
+{
+  "id": "88ac5dad-efd7-40bb-84fe-fbaefdee1fa9",
+  "revision": 0,
+  "last_node_id": 114,
+  "last_link_id": 268,
+  "nodes": [
+    {
+      "id": 106,
+      "type": "VAELoader",
+      "pos": [
+        -1095.323351272446,
+        -544.5643351030203
+      ],
+      "size": [
+        380,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            262
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ace_1.5_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/vae/ace_1.5_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "ace_1.5_vae.safetensors"
+      ]
+    },
+    {
+      "id": 47,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        670,
+        50
+      ],
+      "size": [
+        204.75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            119
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ConditioningZeroOut"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        930,
+        -680
+      ],
+      "size": [
+        329.39477481889753,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 175
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 254
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 119
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 249
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 258
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            256
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        669499951496257,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 78,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        930,
+        -810
+      ],
+      "size": [
+        329.39477481889753,
+        60
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 260
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ModelSamplingAuraFlow"
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 18,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        1280,
+        -800
+      ],
+      "size": [
+        164.8375,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 256
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 262
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            263
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 99,
+      "type": "PrimitiveNode",
+      "pos": [
+        -987.5210439897471,
+        -349.6974686752777
+      ],
+      "size": [
+        278.97400302222843,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "widget": {
+            "name": "seconds"
+          },
+          "links": [
+            250,
+            251
+          ]
+        }
+      ],
+      "title": "Song Duration",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        293.6,
+        "randomize"
+      ]
+    },
+    {
+      "id": 98,
+      "type": "EmptyAceStep1.5LatentAudio",
+      "pos": [
+        -990.2534888322926,
+        50.430416453206064
+      ],
+      "size": [
+        314.90390625,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "seconds",
+          "type": "FLOAT",
+          "widget": {
+            "name": "seconds"
+          },
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            249
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "EmptyAceStep1.5LatentAudio"
+      },
+      "widgets_values": [
+        293.6,
+        1
+      ]
+    },
+    {
+      "id": 112,
+      "type": "SetClipHooks",
+      "pos": [
+        -122.9488032806971,
+        77.50545465426967
+      ],
+      "size": [
+        315,
+        102
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 267
+        },
+        {
+          "name": "hooks",
+          "shape": 7,
+          "type": "HOOKS",
+          "link": 268
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            266
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "SetClipHooks",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": 104,
+      "type": "UNETLoader",
+      "pos": [
+        -1100.323351272446,
+        -864.5643351030201
+      ],
+      "size": [
+        380,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            260
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "acestep_v1.5_turbo.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/diffusion_models/acestep_v1.5_turbo.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "acestep_v1.5_turbo.safetensors",
+        "fp8_e4m3fn_fast"
+      ]
+    },
+    {
+      "id": 105,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -1095.323351272446,
+        -734.5643351030201
+      ],
+      "size": [
+        380,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            267
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "qwen_0.6b_ace15.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_0.6b_ace15.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "qwen_1.7b_ace15.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_1.7b_ace15.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_0.6b_ace15.safetensors",
+        "qwen_1.7b_ace15.safetensors",
+        "ace",
+        "default"
+      ]
+    },
+    {
+      "id": 113,
+      "type": "CreateHookLora",
+      "pos": [
+        -642.4532663462234,
+        161.9745320456428
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prev_hooks",
+          "shape": 7,
+          "type": "HOOKS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "HOOKS",
+          "type": "HOOKS",
+          "links": [
+            268
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.13.0",
+        "Node name for S&R": "CreateHookLora"
+      },
+      "widgets_values": [
+        "adapter_model.safetensors",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 107,
+      "type": "SaveAudioMP3",
+      "pos": [
+        1280,
+        -670
+      ],
+      "size": [
+        700,
+        136
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 263
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "SaveAudioMP3"
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        "V0"
+      ]
+    },
+    {
+      "id": 102,
+      "type": "PrimitiveNode",
+      "pos": [
+        -993.9536847768006,
+        -152.07618545291905
+      ],
+      "size": [
+        268.39945903485034,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "links": [
+            257,
+            258
+          ]
+        }
+      ],
+      "title": "seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        669499951496257,
+        "randomize"
+      ]
+    },
+    {
+      "id": 94,
+      "type": "TextEncodeAceStepAudio1.5",
+      "pos": [
+        271.3790749673053,
+        -777.588325294253
+      ],
+      "size": [
+        610.5393604390213,
+        667.3526639771998
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 266
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 257
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "widget": {
+            "name": "duration"
+          },
+          "link": 251
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            254,
+            255
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "TextEncodeAceStepAudio1.5"
+      },
+      "widgets_values": [
+        "old-school reggaeton",
+        "[Intro]\n[8-bit synth arpeggio]\n(Ay, papi)\n\n[Chorus]\nEstoy escuchando reggaetón\nSe me subió la calentura y me empezó a bailar\nPerreando contra la pared\nDespués que dijo que me conoce me vio bailar sola y me pegó\nPero yo no estoy puesto pa' eso, no quiero mandarte textos\nMejor te lo meto, el sexo no es pa' perros\nMami, soy tu gato, no te me vengas a llorar\nSi me vuelvo un desacato, ey\nPero yo no estoy puesto pa' eso, no quiero mandarte textos\nMejor te lo meto, el sexo no es pa' perros\nMami, soy tu gato, no te me vengas a llorar\nSi me vuelvo un desacato\n\n[Verse 1]\nTengo a tu perro aullando en la azotea\nA mí no me llames pa' nadie, te he botea\nEn el cuti, su mami, ¿quién lo quea?\nEstás fumando porro de la que se marea\nTirando bendiciones, soy el que la batea\nTú eres una bandida, no te hagas la fea\nEsa es la que hay, te lo meto, me hice lea\nEn la cama soy tu perro, en la calle mi chea\n\n[Chorus]\nEstoy escuchando reggaetón\nSe me subió la calentura y me empezó a bailar\nPerreando contra la pared\nDespués que dijo que me conoce me vio bailar sola y me pegó\nPero yo no estoy puesto pa' eso, no quiero mandarte textos\nMejor te lo meto, el sexo no es pa' perros\nMami, soy tu gato, no te me vengas a llorar\nSi me vuelvo un desacato, ey\nPero yo no estoy puesto pa' eso, no quiero mandarte textos\nMejor te lo meto, el sexo no es pa' perros\nMami, soy tu gato, no te me vengas a llorar\nSi me vuelvo un desacato\n\n[Verse 2]\nMami, no me culpes, yo siempre estoy preso\nPerdona, no es así, es que la tengo presa\nLa tengo divariando, no tengo una excusa\nPero me la deja, papi, yo siempre lo uso\nNo puedo enamorarme, no es tan fácil lo confuso\nEso es la que hay, yo siempre me acuso\nPero de tu culi, yo no tengo excusa\nY si tú me cruzas, también me la saco\n\n[Outro]\nEy\nEl Papper, mami\nDímelo, nene, ma'\nEs tu verte\n[Synth arpeggio fades out]\n[Beat continues and fades]\n[Final synth note]",
+        669499951496257,
+        "fixed",
+        94,
+        293.6,
+        "4",
+        "es",
+        "F minor",
+        true,
+        2,
+        0.85,
+        0.9,
+        0,
+        0
+      ]
+    }
+  ],
+  "links": [
+    [
+      119,
+      47,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      175,
+      78,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      249,
+      98,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      250,
+      99,
+      0,
+      98,
+      0,
+      "FLOAT"
+    ],
+    [
+      251,
+      99,
+      0,
+      94,
+      2,
+      "FLOAT"
+    ],
+    [
+      254,
+      94,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      255,
+      94,
+      0,
+      47,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      256,
+      3,
+      0,
+      18,
+      0,
+      "LATENT"
+    ],
+    [
+      257,
+      102,
+      0,
+      94,
+      1,
+      "INT"
+    ],
+    [
+      258,
+      102,
+      0,
+      3,
+      4,
+      "INT"
+    ],
+    [
+      260,
+      104,
+      0,
+      78,
+      0,
+      "MODEL"
+    ],
+    [
+      262,
+      106,
+      0,
+      18,
+      1,
+      "VAE"
+    ],
+    [
+      263,
+      18,
+      0,
+      107,
+      0,
+      "AUDIO"
+    ],
+    [
+      266,
+      112,
+      0,
+      94,
+      0,
+      "CLIP"
+    ],
+    [
+      267,
+      105,
+      0,
+      112,
+      0,
+      "CLIP"
+    ],
+    [
+      268,
+      113,
+      0,
+      112,
+      1,
+      "HOOKS"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Step 1 - Load Models",
+      "bounding": [
+        -1110.323351272446,
+        -934.5643351030201,
+        405,
+        461.6
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Step 2 - Duration",
+      "bounding": [
+        -1047.521043989747,
+        -419.6974686752777,
+        400,
+        170
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Step3 - Prompt",
+      "bounding": [
+        260,
+        -860,
+        636.2388864528039,
+        1055.2815431956337
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5992758193607476,
+      "offset": [
+        1432.3401580769375,
+        1174.1105676769903
+      ]
+    },
+    "frontendVersion": "1.38.14",
+    "workflowRendererVersion": "LG",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
