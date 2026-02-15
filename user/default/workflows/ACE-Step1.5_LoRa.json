@@ -1,0 +1,625 @@
+{
+  "id": "9b248ee0-9e2f-4373-98c3-1e9385750f11",
+  "revision": 0,
+  "last_node_id": 12,
+  "last_link_id": 18,
+  "nodes": [
+    {
+      "id": 12,
+      "type": "VAELoader",
+      "pos": [
+        -2519.2663953875103,
+        -417.40117306288107
+      ],
+      "size": [
+        380,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            16,
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ace_1.5_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/vae/ace_1.5_vae.safetensors",
+            "directory": "vae"
+          }
+        ],
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "vae_name": true
+          },
+          "version": "7.6.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "ace_1.5_vae.safetensors"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "FL_AceStep_PreprocessDataset",
+      "pos": [
+        -1238.7983675751118,
+        -594.5178070200783
+      ],
+      "size": [
+        309.5650390625,
+        166
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "link": 6
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 16
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "sample_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "e867dfc409c8211cb7b95c41e98c32ac6deff7b9",
+        "Node name for S&R": "FL_AceStep_PreprocessDataset",
+        "aux_id": "filliptm/ComfyUI-FL-AceStep-Training"
+      },
+      "widgets_values": [
+        "./datasets/preprocessed_tensors",
+        240,
+        0
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 1,
+      "type": "FL_AceStep_LabelSamples",
+      "pos": [
+        -1589.0764719985837,
+        -580.0476520770048
+      ],
+      "size": [
+        313.6119140625,
+        190
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "link": 1
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 12
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 17
+        },
+        {
+          "name": "llm",
+          "type": "ACESTEP_LLM",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "labeled_count",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_LabelSamples",
+        "aux_id": "filliptm/ComfyUI-FL-AceStep-Training"
+      },
+      "widgets_values": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 4,
+      "type": "FL_AceStep_LLMLoader",
+      "pos": [
+        -1572.8964896581688,
+        -785.6811381922724
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "llm",
+          "type": "ACESTEP_LLM",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_LLMLoader",
+        "aux_id": "filliptm/ComfyUI-FL-AceStep-Training"
+      },
+      "widgets_values": [
+        "acestep-5Hz-lm-0.6B",
+        "cpu",
+        "vllm",
+        ""
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 11,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -2522.02454532212,
+        -600.5057982263545
+      ],
+      "size": [
+        380,
+        130
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "qwen_0.6b_ace15.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_0.6b_ace15.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "qwen_1.7b_ace15.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_1.7b_ace15.safetensors",
+            "directory": "text_encoders"
+          }
+        ],
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "clip_name1": true,
+            "clip_name2": true,
+            "type": true,
+            "device": true
+          },
+          "version": "7.6.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen_0.6b_ace15.safetensors",
+        "qwen_1.7b_ace15.safetensors",
+        "ace",
+        "default"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "FL_AceStep_ScanDirectory",
+      "pos": [
+        -1952.0303345837438,
+        -595.5688709581174
+      ],
+      "size": [
+        320.2427734375,
+        170
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "sample_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_ScanDirectory",
+        "aux_id": "filliptm/ComfyUI-FL-AceStep-Training"
+      },
+      "widgets_values": [
+        "/kaggle/working/ComfyUI/models/loras/Beats",
+        true,
+        "Reggaeton",
+        "replace"
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 10,
+      "type": "UNETLoader",
+      "pos": [
+        -2524.2663953875103,
+        -737.4011730628803
+      ],
+      "size": [
+        380,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12,
+            13,
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "acestep_v1.5_turbo.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/diffusion_models/acestep_v1.5_turbo.safetensors",
+            "directory": "diffusion_models"
+          }
+        ],
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "unet_name": true,
+            "weight_dtype": true
+          },
+          "version": "7.6.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "acestep_v1.5_turbo.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "FL_AceStep_Train",
+      "pos": [
+        -1024.8923264166501,
+        -312.67826324932935
+      ],
+      "size": [
+        773.7998442290091,
+        654.2143446077278
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 13
+        },
+        {
+          "name": "config",
+          "type": "ACESTEP_TRAINING_CONFIG",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": null
+        },
+        {
+          "name": "final_lora_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_Train",
+        "aux_id": "filliptm/ComfyUI-FL-AceStep-Training"
+      },
+      "widgets_values": [
+        "./datasets/preprocessed_tensors",
+        "reggaetonbeats_torbo",
+        "",
+        ""
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 7,
+      "type": "FL_AceStep_TrainingConfig",
+      "pos": [
+        -1394.7152152700087,
+        -296.6407442971491
+      ],
+      "size": [
+        327.2564453125,
+        394
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "ACESTEP_TRAINING_CONFIG",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "27d70c722e9be51a08825564e6d6741d011eac83",
+        "Node name for S&R": "FL_AceStep_TrainingConfig",
+        "aux_id": "filliptm/ComfyUI-FL-AceStep-Training"
+      },
+      "widgets_values": [
+        64,
+        128,
+        0.1,
+        0.0003,
+        600,
+        1,
+        1,
+        200,
+        "./datasets/lora_output",
+        42,
+        "fixed",
+        100,
+        0.01,
+        1,
+        "q_proj,k_proj,v_proj,o_proj"
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    }
+  ],
+  "links": [
+    [
+      1,
+      6,
+      0,
+      1,
+      0,
+      "ACESTEP_DATASET"
+    ],
+    [
+      6,
+      1,
+      0,
+      5,
+      0,
+      "ACESTEP_DATASET"
+    ],
+    [
+      11,
+      7,
+      0,
+      8,
+      1,
+      "ACESTEP_TRAINING_CONFIG"
+    ],
+    [
+      12,
+      10,
+      0,
+      1,
+      1,
+      "MODEL"
+    ],
+    [
+      13,
+      10,
+      0,
+      8,
+      0,
+      "MODEL"
+    ],
+    [
+      14,
+      10,
+      0,
+      5,
+      1,
+      "MODEL"
+    ],
+    [
+      15,
+      11,
+      0,
+      5,
+      3,
+      "CLIP"
+    ],
+    [
+      16,
+      12,
+      0,
+      5,
+      2,
+      "VAE"
+    ],
+    [
+      17,
+      12,
+      0,
+      1,
+      2,
+      "VAE"
+    ],
+    [
+      18,
+      4,
+      0,
+      1,
+      3,
+      "ACESTEP_LLM"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        -1948.836186456601,
+        -838.7548134630448,
+        1030.7397681050033,
+        433.55277317625473
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Group",
+      "bounding": [
+        -1945.9186109949806,
+        -355.1014009456545,
+        1718.8387648908624,
+        719.7038687532394
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.6588450000000075,
+      "offset": [
+        2660.988303083116,
+        1055.9984819592933
+      ]
+    },
+    "frontendVersion": "1.38.14",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
