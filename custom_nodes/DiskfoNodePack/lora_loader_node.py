@@ -427,5 +427,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ACEStepLoRALoader": "ACE-Step LoRA Loader (AUTO CLEAN + disable + debug)",
+    "ACEStepLoRALoader": "Diskfo Ace-Step 1.5 LoRA Loader",
 }
