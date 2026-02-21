@@ -5,6 +5,80 @@
   "last_link_id": 3,
   "nodes": [
     {
+      "id": 4,
+      "type": "AceStep_Loss_Graph",
+      "pos": [
+        -1450.041717924825,
+        -280.19846153661183
+      ],
+      "size": [
+        478.1209997164415,
+        383.98441243735886
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "training_status",
+          "shape": 7,
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AceStep_Loss_Graph"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "AceStep15DatasetBuilder",
+      "pos": [
+        -2346.8427827114615,
+        -284.47327128589126
+      ],
+      "size": [
+        369.0333312988281,
+        174
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "dataset_path",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AceStep15DatasetBuilder"
+      },
+      "widgets_values": [
+        "/root/ComfyUI/datasets",
+        "reggaeton_beats",
+        "reggaeton_beats",
+        true,
+        false
+      ]
+    },
+    {
       "id": 2,
       "type": "AceStep15DatasetPreprocessor",
       "pos": [
@@ -46,82 +120,8 @@
       "widgets_values": [
         "(none)",
         240,
-        "reggaeton"
+        "reggaeton_beats"
       ]
-    },
-    {
-      "id": 1,
-      "type": "AceStep15DatasetBuilder",
-      "pos": [
-        -2346.8427827114615,
-        -284.47327128589126
-      ],
-      "size": [
-        369.0333312988281,
-        174
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "status",
-          "type": "STRING",
-          "links": null
-        },
-        {
-          "name": "dataset_path",
-          "type": "STRING",
-          "links": [
-            1
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "AceStep15DatasetBuilder"
-      },
-      "widgets_values": [
-        "/root/ComfyUI/datasets",
-        "reggaeton2",
-        "reggaeton",
-        true,
-        false
-      ]
-    },
-    {
-      "id": 4,
-      "type": "AceStep_Loss_Graph",
-      "pos": [
-        -1450.041717924825,
-        -280.19846153661183
-      ],
-      "size": [
-        478.1209997164415,
-        383.98441243735886
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "training_status",
-          "shape": 7,
-          "type": "STRING",
-          "link": 3
-        }
-      ],
-      "outputs": [
-        {
-          "name": "status",
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "AceStep_Loss_Graph"
-      },
-      "widgets_values": []
     },
     {
       "id": 3,
@@ -159,15 +159,15 @@
       },
       "widgets_values": [
         "(none)",
-        "reggaeton2",
+        "reggaeton_beats",
         64,
         128,
         0.0003,
         1000,
         1,
-        4,
+        1,
         100,
-        398804364,
+        2686647342,
         "randomize",
         "none",
         "(none — train from scratch)"
