@@ -1,0 +1,11 @@
+peft>=0.18.0
+transformers>=4.51.0
+diffusers
+huggingface_hub
+torchaudio
+soundfile
+safetensors
+pyyaml
+bitsandbytes>=0.43.0
+accelerate>=0.20.0
+vector-quantize-pytorch==1.27.15
