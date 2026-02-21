@@ -1,0 +1,217 @@
+{
+  "id": "b6af1443-5a37-4760-9c9d-35b3b354267b",
+  "revision": 0,
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "AceStep15DatasetPreprocessor",
+      "pos": [
+        -2368.473740370671,
+        -32.47229883891423
+      ],
+      "size": [
+        411.54999389648435,
+        126
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dataset_path",
+          "shape": 7,
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "tensor_path",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AceStep15DatasetPreprocessor"
+      },
+      "widgets_values": [
+        "(none)",
+        240,
+        "reggaeton"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "AceStep15DatasetBuilder",
+      "pos": [
+        -2346.8427827114615,
+        -284.47327128589126
+      ],
+      "size": [
+        369.0333312988281,
+        174
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "dataset_path",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AceStep15DatasetBuilder"
+      },
+      "widgets_values": [
+        "/root/ComfyUI/datasets",
+        "reggaeton2",
+        "reggaeton",
+        true,
+        false
+      ]
+    },
+    {
+      "id": 4,
+      "type": "AceStep_Loss_Graph",
+      "pos": [
+        -1450.041717924825,
+        -280.19846153661183
+      ],
+      "size": [
+        478.1209997164415,
+        383.98441243735886
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "training_status",
+          "shape": 7,
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AceStep_Loss_Graph"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "AceStep15LoRATrainer",
+      "pos": [
+        -1884.254158739405,
+        -271.07612176542005
+      ],
+      "size": [
+        353.6666625976562,
+        346
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "tensor_path",
+          "shape": 7,
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AceStep15LoRATrainer"
+      },
+      "widgets_values": [
+        "(none)",
+        "reggaeton2",
+        64,
+        128,
+        0.0003,
+        1000,
+        1,
+        4,
+        100,
+        398804364,
+        "randomize",
+        "none",
+        "(none — train from scratch)"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      1,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      1,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 1.0610764609500123,
+      "offset": [
+        2510.5995018497033,
+        470.6290301759252
+      ]
+    },
+    "frontendVersion": "1.38.14"
+  },
+  "version": 0.4
+}
