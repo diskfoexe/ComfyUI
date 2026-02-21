@@ -30,3 +30,64 @@ kornia>=0.7.1
 spandrel
 pydantic~=2.0
 pydantic-settings~=2.0
+
+
+#ComfyUI_RyanOnTheInside
+opencv-python>=4.5.0
+#scipy
+#pillow
+pymunk>=6.8.0,<7.0.0
+matplotlib
+openunmix
+mido
+pygame
+scikit-image
+
+
+# ACE-Step Training Dependencies
+
+# Core PyTorch
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Transformers and Diffusers
+transformers>=4.40.0
+diffusers>=0.28.0
+
+# LoRA (PEFT)
+peft>=0.10.0
+
+# Training
+lightning>=2.0.0
+accelerate>=0.30.0
+
+# Model downloading
+huggingface-hub>=0.20.0
+
+# Logging
+loguru>=0.7.0
+
+# Audio processing
+soundfile>=0.12.0
+
+# Model serialization
+safetensors>=0.4.0
+
+# Optional: vLLM backend for LLM (uncomment if needed)
+# vllm>=0.4.0
+
+
+#Comfyui_SN_AceStepTrainer
+peft>=0.18.0
+transformers>=4.51.0
+diffusers
+huggingface_hub
+torchaudio
+soundfile
+safetensors
+pyyaml
+bitsandbytes>=0.43.0
+accelerate>=0.20.0
+vector-quantize-pytorch==1.27.15
+
+
